@@ -30,4 +30,4 @@ def logcheck(keyword,
     print('All done.')
 
 # call the function with 'USB' as the keyword.
-logcheck('usb', filepath='/var/log/syslog', outpath='/root/Desktop/Python Projects/Python for Pentesters/logoutput.txt')
+logcheck('usb', filepath='x', outpath='y')
